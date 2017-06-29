@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(middleware.addHeaders);
 
+app.get('/user', mainCtrl.getUser);
 app.get('/name', mainCtrl.getName);
 app.get('/location', mainCtrl.getLocation);
 app.get('/occupations', mainCtrl.getOccupations);
@@ -19,6 +20,13 @@ app.get('/family/:gender', mainCtrl.getFamilyGender);
 app.get('/restaurants/', mainCtrl.getRestaurants);
 app.get('/restaurants/:name', mainCtrl.getRestaurantsName);
 
+app.put('/name', mainCtrl.changeName);
+app.put('/location', mainCtrl.changeLocation);
+
+app.post('/occupations', mainCtrl.addOccupation);
+app.post('/restaurants/', mainCtrl.addRestaurant);
+app.post('/family', mainCtrl.addFamily);
+app.post('/hobbies', mainCtrl.addHobby);
 
 
-app.listen(port, ()=>{console.log(`Listening on port ${port}.`)})
+app.listen(port, ()=>{console.log(`Jarvis here; Listening on port ${port}.`)})
